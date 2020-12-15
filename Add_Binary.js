@@ -5,6 +5,11 @@
  * @param {string} b
  * @return {string}
  */
-var addBinary = function(a, b) {
-    
+var addBinary = function (a, b) {
+    //converting binary to decimal
+    var dec = BigInt('0b'+a) + BigInt('0b'+b);
+    //converting deciaml to binary
+    return dec.toString(2)
 };
+
+console.log(addBinary('11','10'))

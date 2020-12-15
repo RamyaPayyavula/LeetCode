@@ -7,10 +7,14 @@
  * @return {number[]}
  */
 var plusOne = function (digits) {
+    const len = digits.length
     let res = BigInt(digits.join('')) + BigInt(1);
-    return res.toString().split('').map((ele)=> Number(ele));
-};
-
+    res = res.toString().split('').map((ele) => Number(ele))
+    const extra = Array.from({ length: len - res.length }, () => 0);
+    return extra.length > 0 ? new Array(...extra,...res) : res
+    
+ };
+console.log(plusOne([0,0]))
 console.log(plusOne([1,2,3]));
 console.log(plusOne([4,3,2,1]));
 console.log(plusOne([0]));
