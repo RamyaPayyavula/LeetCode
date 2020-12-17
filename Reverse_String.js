@@ -14,4 +14,16 @@ var reverseString = function (s) {
     return s;
 };
 
+var reverseString = function (s) {
+    if (s.length === 0) return null;
+    if (s.length === 1) return s[0];
+    return reverseString(s.slice(1,s.length)).concat(s[0]);
+};
+
+var reverseString = function (s) {
+    if (s.length === 0) return null;
+    if (s.length === 1) return s[0];
+    s = s[s.length - 1].concat(reverseString(s.slice(1, s.length - 1))).concat(s[0])
+};
+
 console.log(reverseString(["h","e","l","l","o"]))
