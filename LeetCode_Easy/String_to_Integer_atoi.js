@@ -28,9 +28,9 @@ var myAtoi = function(s) {
     }
 };
 
-// console.log(myAtoi("42"))
-// console.log(myAtoi("        -42"))
-// console.log(myAtoi("4193 with words"))
-// console.log(myAtoi("987 words and "))
-// console.log(myAtoi("-91283472332"))
+console.log(myAtoi("42"))
+console.log(myAtoi("        -42"))
+console.log(myAtoi("4193 with words"))
+console.log(myAtoi("987 words and "))
+console.log(myAtoi("-91283472332"))
 console.log(myAtoi("   +0 123"))
