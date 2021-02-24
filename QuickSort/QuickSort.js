@@ -22,7 +22,7 @@ var partition = function(A,left,right){
             A[j]=temp;
             i++;
             j--;
-            swaps = swaps+1;;
+            // swaps = swaps+1;;
         }
     }
 

@@ -24,7 +24,6 @@ var merge = function(left,right){
             arr.push(right.shift());
         }
     }
-    console.log(arr);
     return arr.concat(left.concat(right));
 }
 
