@@ -12,15 +12,17 @@
  */
 var inorderSuccessor = function(bst, p) {
     let isNext = false
+    let ans
     var inorder = (root) => {
-        console.log('root',root)
-        if(!root) return 
+        if(!root || ans!== undefined) return 
         inorder(root.left)
-        if(isNext) return root
+        if(isNext && ans === undefined) {
+            ans = root
+            return 
+        }
         if (root.val === p.val) isNext = true
         inorder(root.right)
     }
-    const ans = inorder(bst)
-    return ans!== undefined ? ans : null
-
+    inorder(bst)
+    return ans
 };
