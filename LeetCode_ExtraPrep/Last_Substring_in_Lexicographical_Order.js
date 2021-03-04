@@ -20,18 +20,28 @@ var lastSubstring = function(s) {
  * @return {string}
  */
 var lastSubstring = function(s) {
-    let len = s.length;
-    if (len==0) return 0;
-    let i=0, j=1, k=0
-    while (j + k < len) {
-        if (s.charAt(i + k) == s.charAt(j + k)) k++;
-        else {
-            if (s.charAt(i + k) < s.charAt(j + k)) i = j;
-            j++;
-            k = 0;
+    let i = 0 // index of final substring.
+    let j = 1 // index of lookahead possible substring.
+    let k = 0 // moving offset to compare i & j.
+
+    while (j + k < s.length) {
+        if (s[i + k] < s[j + k]) {
+            i = Math.max(i + k + 1, j)
+            j = i + 1
+            k = 0
+        }
+
+        if (s[i + k] === s[j + k]) {
+            k += 1
+        }
+
+        if (s[i + k] > s[j + k]) {
+            j = j + k + 1
+            k = 0
         }
     }
-    return s.substring(i);
+
+  return s.substring(i)
 };
 
 
