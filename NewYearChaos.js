@@ -1,52 +1,57 @@
-// function minimumBribes(q) {
-//   if (q.length < 2) {
-//     return 0;
-//   }
-//   let bribe = 0;
-//   for (let i = 0; i < q.length; i++) {
-//     if (q[i] - (i + 1) > 2) {
-//       return "Too chaotic";
-//     }
-//     for (let j = i + 1; j < q.length; j++) {
-//       if (q[i] > q[j]) {
-//         let tmp = q[j];
-//         q[j] = q[i];
-//         q[i] = tmp;
-//         bribe = bribe + 1;
-//       }
-//     }
-//   }
-//   return bribe;
-// }
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-var xhr = new XMLHttpRequest();
-xhr.open(
-  "POST",
-  "https://qo6mgsy246.execute-api.us-east-1.amazonaws.com/Dev/compare-yourself"
-);
-xhr.onreadystatechange = function (event) {
-  console.log(event);
-};
-xhr.send();
+'use strict';
 
-var xhr = new XMLHttpRequest();
+process.stdin.resume();
+process.stdin.setEncoding('utf-8');
 
-xhr.open(
-  "POST",
-  "https://qo6mgsy246.execute-api.us-east-1.amazonaws.com/Dev/compare-yourself"
-);
-xhr.onreadystatechange = function (event) {
-  console.log(event.target.response);
-};
-xhr.setRequestHeader("Content-Type", "application/json");
-xhr.send(JSON.stringify({ age: 28, height: 32, income: 2000 }));
+let inputString = '';
+let currentLine = 0;
 
-xhr.open(
-  "GET",
-  "https://qo6mgsy246.execute-api.us-east-1.amazonaws.com/Dev/compare-yourself/single"
-);
+process.stdin.on('data', inputStdin => {
+    inputString += inputStdin;
+});
 
-xhr.open(
-  "DELETE",
-  "https://qo6mgsy246.execute-api.us-east-1.amazonaws.com/Dev/compare-yourself"
-);
+process.stdin.on('end', _ => {
+    inputString = inputString.replace(/\s*$/, '')
+        .split('\n')
+        .map(str => str.replace(/\s*$/, ''));
+
+    main();
+});
+
+function readLine() {
+    return inputString[currentLine++];
+}
+
+// Complete the minimumBribes function below.
+function minimumBribes(q) {
+    if(q.length < 2){
+        return 0;
+    }
+    let bribe =0;
+    for(let i=0; i< q.length ; i++){
+        if((q[i] - (i+1)) > 2){
+            return 'Too chaotic';
+        }
+        for(let j=i+1;j<q.length;j++){
+            if(q[i] > q[j]){ 
+                let tmp=q[j];
+                q[j]=q[i];
+                q[i]=tmp;
+                bribe++;
+            }
+        }
+    }
+    return bribe;
+}
+
+function main() {
+    const t = parseInt(readLine(), 10);
+
+    for (let tItr = 0; tItr < t; tItr++) {
+        const n = parseInt(readLine(), 10);
+
+        const q = readLine().split(' ').map(qTemp => parseInt(qTemp, 10));
+
+        console.log(minimumBribes(q));
+    }
+}
