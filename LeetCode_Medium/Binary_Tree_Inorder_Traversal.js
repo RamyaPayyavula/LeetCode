@@ -18,6 +18,6 @@ var inorderTraversal = function(root) {
         inorder.push(node.val)
         traverse(node.right)
     }
-     traverse(root)
+    traverse(root)
     return inorder
 };
