@@ -9,7 +9,6 @@ var sumOfUnique = function(nums) {
     for (let i = 0; i < nums.length; i++){
         const re = new RegExp(nums[i], "g");
         const count = str.match(re).length
-        console.log(nums[i], count);
         if (count === 1) sum = sum + nums[i];
     }
     return sum;
